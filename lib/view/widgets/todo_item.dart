@@ -48,7 +48,20 @@ class TodoItem extends StatelessWidget {
                           id: taskController.list[index].id);
                     },
                     icon: Icon(
-                      Icons.delete_outlined,
+                      Icons.delete,
+                      color: Colors.yellow,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      taskController.updateItemIntoFavorite(
+                          taskId: taskController.list[index].id,
+                          favorite: taskController.list[index].favorite);
+                    },
+                    icon: Icon(
+                      taskController.list[index].favorite == 1
+                          ? Icons.favorite
+                          : Icons.favorite_outline,
                       color: Colors.red,
                     ),
                   ),
@@ -58,6 +71,9 @@ class TodoItem extends StatelessWidget {
                       Get.to(
                         EditScreen(
                           id: taskController.list[index].id,
+                          title: taskController.list[index].title,
+                          desc: taskController.list[index].description,
+                          time: taskController.list[index].time,
                         ),
                       );
                     },

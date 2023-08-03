@@ -9,6 +9,8 @@ class HomeScreen extends StatelessWidget {
 
   final taskController = Get.put(SQLController());
 
+  final SQLController controller = Get.find();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
